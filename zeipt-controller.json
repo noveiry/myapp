@@ -1,0 +1,37 @@
+{
+   "kind":"ReplicationController",
+   "apiVersion":"v1",
+   "metadata":{
+      "name":"zeipt",
+      "labels":{
+         "app":"zeipt"
+      }
+   },
+   "spec":{
+      "replicas":3,
+      "selector":{
+         "app":"zeipt"
+      },
+      "template":{
+         "metadata":{
+            "labels":{
+               "app":"zeipt"
+            }
+         },
+         "spec":{
+            "containers":[
+               {
+                  "name":"zeipt",
+                  "image":"gcr.io/zeipt-214607/zeipt-img:v1",
+                  "ports":[
+                     {
+                        "name":"http-server",
+                        "containerPort":3000
+                     }
+                  ]
+               }
+            ]
+         }
+      }
+   }
+}
